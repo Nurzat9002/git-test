@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, Sinitial-scale=1.0">
+    <title>Kaili wisdom</title>
+    <link rel="stylesheet" href="css/prototype.css">
+    <link rel="icon" href="img/n5.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/n5.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div id="top">
+        <div id="t_left">
+            <img src="img/logo1.png" alt="">
+            <p>凯力智慧 <br> Kaili wisdom</p>
+        </div>
+        <p>新疆凯力星车辆动态监控平台</p>
+    </div>
+    <div id="main">
+        <img src="img/adv.png" alt="">
+        <div id="login">
+            <p>用户登陆</p>
+            <input id="ip1" type="text" placeholder="请输入用户名">
+            <input id="ip2" type="password" placeholder="请输入密码">
+            <input id="ip3" type="text" placeholder="请输入验证码">
+            <span class="code" id="checkcode">a4ce17</span>
+            <button id="bt1" onclick="f1()">立即登录</button>
+            <button id="bt2" onclick="f1()">本地网站</button>
+
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function() {
+        document.getElementById('checkcode').innerText = getCode()
+
+        function getCode() {
+            var arr = ['a', 'b', 'c', 'd', 'e', 'f', '1', '2',
+                '3', '4', '5', '6', '7', '8', '9'
+            ]
+            var str = ''
+            for (var i = 0; i < 6; i++) {
+                var num = Math.floor(Math.random() * 15)
+                str += arr[num]
+            }
+            return str
+        }
+        var codee = getCode()
+        document.getElementById('ip3').innerText = codee
+        document.getElementById('checkcode').onclick = function() {
+            document.getElementById('checkcode').innerText = getCode()
+        }
+        document.getElementById('bt1').onclick = function() {
+            var code = document.getElementById('checkcode').innerText
+            var inputcode = document.getElementById('ip3').value
+            var account = 'nurzat'
+            var pwd = 123456
+            var account1 = document.getElementById('ip1').value
+            var pwd1 = document.getElementById('ip2').value
+            if (account1 == account && pwd1 == pwd) {
+                window.location.href = './Index.html'
+            } else {
+                alert("信息验证失败")
+                document.getElementById('ip3').value = ''
+                document.getElementById('checkcode').innerText = getCode()
+            }
+
+        }
+        document.getElementById('bt2').onclick = function() {
+            alert('wait')
+        }
+    }
+</script>
+
+</html>
